@@ -9,7 +9,7 @@ table. [Event details are outlined here](https://develop.zendesk.com/hc/en-us/ar
 
 ## Examples
 
-#### List all ticket audit rows
+### List all ticket audit rows
 
 ```sql
 select
@@ -22,7 +22,7 @@ from
   zendesk_ticket_audit;
 ```
 
-#### List all events associated with ticket audits
+### List all events associated with ticket audits
 
 ```sql
 select
@@ -39,7 +39,7 @@ lateral
   jsonb_array_elements(ta.events) as e;
 ```
 
-#### List all events that changed tags
+### List all events that changed tags
 
 ```sql
 select
@@ -60,7 +60,7 @@ and
   e ->> 'field_name' = 'tags';
 ```
 
-#### List all satisfaction rating events
+### List all satisfaction rating events
 
 ```sql
 select

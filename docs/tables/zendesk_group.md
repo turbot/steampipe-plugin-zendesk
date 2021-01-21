@@ -8,7 +8,7 @@ without also being assigned to a Group.
 
 ## Examples
 
-#### Basic group info
+### Basic group info
 
 ```sql
 select

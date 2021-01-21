@@ -8,7 +8,7 @@ route tickets to groups of agents or to send email notifications.
 
 ## Examples
 
-#### Basic organization info
+### Basic organization info
 
 ```sql
 select
@@ -18,7 +18,7 @@ from
   zendesk_organization;
 ```
 
-#### Check if ticket and comment sharing settings match
+### Check if ticket and comment sharing settings match
 
 ```sql
 select
@@ -31,7 +31,7 @@ where
   shared_comments != shared_tickets;
 ```
 
-#### Get ticket counts by organization
+### Get ticket counts by organization
 
 ```sql
 select
@@ -48,7 +48,7 @@ order by
   count desc;`
 ```
 
-#### Find all users for an organization
+### Find all users for an organization
 
 ```sql
 select

@@ -4,7 +4,7 @@ Brand information for the Zendesk tenant.
 
 ## Examples
 
-#### Get brand information
+### Get brand information
 
 ```sql
 select
