@@ -36,10 +36,10 @@ func tableZendeskTrigger() *plugin.Table {
 			{Name: "actions", Type: proto.ColumnType_JSON, Description: "An array of actions describing what the trigger will do."},
 			{Name: "conditions_all", Type: proto.ColumnType_JSON, Transform: transform.FromField("Conditions.All"), Description: "Trigger if all conditions are met."},
 			{Name: "conditions_any", Type: proto.ColumnType_JSON, Transform: transform.FromField("Conditions.Any"), Description: "Trigger if any condition is met."},
-			{Name: "created_at", Type: proto.ColumnType_DATETIME, Description: "The time the trigger was created"},
+			{Name: "created_at", Type: proto.ColumnType_TIMESTAMP, Description: "The time the trigger was created"},
 			{Name: "description", Type: proto.ColumnType_STRING, Description: "The description of the trigger"},
 			{Name: "position", Type: proto.ColumnType_INT, Description: "Position of the trigger, determines the order they will execute in."},
-			{Name: "updated_at", Type: proto.ColumnType_DATETIME, Description: "The time of the last update of the trigger"},
+			{Name: "updated_at", Type: proto.ColumnType_TIMESTAMP, Description: "The time of the last update of the trigger"},
 		},
 	}
 }

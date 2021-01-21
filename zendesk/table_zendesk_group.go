@@ -23,8 +23,8 @@ func tableZendeskGroup() *plugin.Table {
 			{Name: "url", Type: proto.ColumnType_STRING, Description: "API url of the group"},
 			{Name: "name", Type: proto.ColumnType_STRING, Description: "Name of the group"},
 			{Name: "deleted", Type: proto.ColumnType_BOOL, Description: "True if the group has been deleted"},
-			{Name: "created_at", Type: proto.ColumnType_DATETIME, Description: "The time the group was created"},
-			{Name: "updated_at", Type: proto.ColumnType_DATETIME, Description: "The time of the last update of the group"},
+			{Name: "created_at", Type: proto.ColumnType_TIMESTAMP, Description: "The time the group was created"},
+			{Name: "updated_at", Type: proto.ColumnType_TIMESTAMP, Description: "The time of the last update of the group"},
 		},
 	}
 }

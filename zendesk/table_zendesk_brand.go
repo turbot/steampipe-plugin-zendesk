@@ -31,7 +31,7 @@ func tableZendeskBrand() *plugin.Table {
 			// Other columns
 			{Name: "active", Type: proto.ColumnType_BOOL, Description: "If the brand is set active"},
 			{Name: "brand_url", Type: proto.ColumnType_STRING, Description: "The URL of the brand"},
-			{Name: "created_at", Type: proto.ColumnType_DATETIME, Description: "The time the brand was created"},
+			{Name: "created_at", Type: proto.ColumnType_TIMESTAMP, Description: "The time the brand was created"},
 			{Name: "default", Type: proto.ColumnType_BOOL, Description: "Is the brand the default brand for this account"},
 			{Name: "has_help_center", Type: proto.ColumnType_BOOL, Description: "If the brand has a Help Center"},
 			{Name: "help_center_state", Type: proto.ColumnType_STRING, Description: "The state of the Help Center. Allowed values are \"enabled\", \"disabled\", or \"restricted\"."},
@@ -46,7 +46,7 @@ func tableZendeskBrand() *plugin.Table {
 			{Name: "signature_template", Type: proto.ColumnType_STRING, Description: "The signature template for a brand"},
 			{Name: "subdomain", Type: proto.ColumnType_STRING, Description: "The subdomain of the brand"},
 			{Name: "ticket_form_ids", Type: proto.ColumnType_JSON, Description: "The ids of ticket forms that are available for use by a brand"},
-			{Name: "updated_at", Type: proto.ColumnType_DATETIME, Description: "The time of the last update of the brand"},
+			{Name: "updated_at", Type: proto.ColumnType_TIMESTAMP, Description: "The time of the last update of the brand"},
 			{Name: "url", Type: proto.ColumnType_STRING, Description: "The API URL of the brand"},
 		},
 	}

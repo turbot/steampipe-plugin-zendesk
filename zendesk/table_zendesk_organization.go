@@ -21,7 +21,7 @@ func tableZendeskOrganization() *plugin.Table {
 			Hydrate:    getOrganization,
 		},
 		Columns: []*plugin.Column{
-			{Name: "created_at", Type: proto.ColumnType_DATETIME, Description: "The time the organization was created"},
+			{Name: "created_at", Type: proto.ColumnType_TIMESTAMP, Description: "The time the organization was created"},
 			//{Name: "details", Type: proto.ColumnType_STRING, Description: "Any details obout the organization, such as the address"},
 			{Name: "domain_names", Type: proto.ColumnType_JSON, Description: "An array of domain names associated with this organization"},
 			//{Name: "external_id", Type: proto.ColumnType_STRING, Description: "A unique external id to associate organizations to an external record"},
@@ -33,7 +33,7 @@ func tableZendeskOrganization() *plugin.Table {
 			{Name: "shared_comments", Type: proto.ColumnType_BOOL, Description: "End users in this organization are able to see each other's comments on tickets"},
 			{Name: "shared_tickets", Type: proto.ColumnType_BOOL, Description: "End users in this organization are able to see each other's tickets"},
 			{Name: "tags", Type: proto.ColumnType_JSON, Description: "The tags of the organization"},
-			{Name: "updated_at", Type: proto.ColumnType_DATETIME, Description: "The time of the last update of the organization"},
+			{Name: "updated_at", Type: proto.ColumnType_TIMESTAMP, Description: "The time of the last update of the organization"},
 			{Name: "url", Type: proto.ColumnType_STRING, Description: "The API url of this organization"},
 		},
 	}

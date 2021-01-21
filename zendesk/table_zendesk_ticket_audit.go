@@ -27,7 +27,7 @@ func tableZendeskTicketAudit() *plugin.Table {
 			{Name: "ticket_id", Type: proto.ColumnType_INT, Description: "The ID of the associated ticket."},
 			// Other columns
 			{Name: "author_id", Type: proto.ColumnType_INT, Description: "The user who created the audit."},
-			{Name: "created_at", Type: proto.ColumnType_DATETIME, Description: "The time the audit was created."},
+			{Name: "created_at", Type: proto.ColumnType_TIMESTAMP, Description: "The time the audit was created."},
 			{Name: "events", Type: proto.ColumnType_JSON, Description: "An array of the events that happened in this audit."},
 			{Name: "metadata", Type: proto.ColumnType_JSON, Description: "Metadata for the audit, custom and system data."},
 			{Name: "via_channel", Type: proto.ColumnType_STRING, Transform: transform.FromField("Via.Channel"), Description: "How the ticket or event was created. Examples: \"web\", \"mobile\", \"rule\", \"system\"."},
