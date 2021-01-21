@@ -1,0 +1,3 @@
+connection "zendesk" {
+  plugin    = "zendesk"                 
+} 
