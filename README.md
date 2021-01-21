@@ -20,7 +20,7 @@
 
 Use SQL to query tickets, users and more from Zendesk. For example:
 
-```
+```sql
 select id, created_at, subject from zendesk_ticket;
 ```
 
