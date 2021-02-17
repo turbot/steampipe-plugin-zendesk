@@ -59,7 +59,7 @@ func listBrand(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) 
 */
 
 func getBrand(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (interface{}, error) {
-	conn, err := connect(ctx)
+	conn, err := connect(ctx, d)
 	if err != nil {
 		return nil, err
 	}
