@@ -16,31 +16,32 @@ func connect(ctx context.Context, d *plugin.QueryData) (*zendesk.Client, error) 
 		return nil, err
 	}
 
+	subdomain := os.Getenv("ZENDESK_SUBDOMAIN")
+	user := os.Getenv("ZENDESK_USER")
+	token := os.Getenv("ZENDESK_TOKEN")
+
 	zendeskConfig := GetConfig(d.Connection)
 	if &zendeskConfig != nil {
 		if zendeskConfig.Account != nil {
-			os.Setenv("ZENDESK_SUBDOMAIN", *zendeskConfig.Account)
+			subdomain = *zendeskConfig.Account
 		}
 		if zendeskConfig.Email != nil {
-			os.Setenv("ZENDESK_USER", *zendeskConfig.Email)
+			user = *zendeskConfig.Email
 		}
 		if zendeskConfig.Token != nil {
-			os.Setenv("ZENDESK_TOKEN", *zendeskConfig.Token)
+			token = *zendeskConfig.Token
 		}
 	}
 
-	subdomain, ok := os.LookupEnv("ZENDESK_SUBDOMAIN")
-	if !ok || subdomain == "" {
+	if subdomain == "" {
 		return nil, errors.New("ZENDESK_SUBDOMAIN environment variable must be set")
 	}
 
-	user, ok := os.LookupEnv("ZENDESK_USER")
-	if !ok || user == "" {
+	if user == "" {
 		return nil, errors.New("ZENDESK_USER environment variable must be set")
 	}
 
-	token, ok := os.LookupEnv("ZENDESK_TOKEN")
-	if !ok || token == "" {
+	if token == "" {
 		return nil, errors.New("ZENDESK_TOKEN environment variable must be set")
 	}
 
