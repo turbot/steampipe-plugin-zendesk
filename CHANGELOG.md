@@ -2,4 +2,4 @@
 
 _What's new?_
 
-- Added support for setting [connection configuration](https://github.com/turbot/steampipe-plugin-zendesk/blob/main/docs/index.md#connection-configuration) arguments for the plugin.
+- Added support for [connection configuration](https://github.com/turbot/steampipe-plugin-zendesk/blob/main/docs/index.md#connection-configuration). You may specify zendesk `subdomain`, `email` and `token` for each connection in a configuration file. You can have multiple zendesk connections, each configured for a different zendesk account.
