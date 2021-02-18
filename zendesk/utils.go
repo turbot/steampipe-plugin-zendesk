@@ -34,15 +34,15 @@ func connect(ctx context.Context, d *plugin.QueryData) (*zendesk.Client, error) 
 	}
 
 	if subdomain == "" {
-		return nil, errors.New("ZENDESK_SUBDOMAIN environment variable must be set")
+		return nil, errors.New("'account' must be set in the connection configuration")
 	}
 
 	if user == "" {
-		return nil, errors.New("ZENDESK_USER environment variable must be set")
+		return nil, errors.New("'email' must be set in the connection configuration")
 	}
 
 	if token == "" {
-		return nil, errors.New("ZENDESK_TOKEN environment variable must be set")
+		return nil, errors.New("'token' must be set in the connection configuration")
 	}
 
 	// example.zendesk.com
