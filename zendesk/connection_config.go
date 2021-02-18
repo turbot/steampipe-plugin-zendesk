@@ -6,13 +6,13 @@ import (
 )
 
 type zendeskConfig struct {
-	Account *string `cty:"account"`
-	Email   *string `cty:"email"`
-	Token   *string `cty:"token"`
+	SubDomain *string `cty:"subdomain"`
+	Email     *string `cty:"email"`
+	Token     *string `cty:"token"`
 }
 
 var ConfigSchema = map[string]*schema.Attribute{
-	"account": {
+	"subdomain": {
 		Type: schema.TypeString,
 	},
 	"email": {

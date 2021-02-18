@@ -22,8 +22,8 @@ func connect(ctx context.Context, d *plugin.QueryData) (*zendesk.Client, error) 
 
 	zendeskConfig := GetConfig(d.Connection)
 	if &zendeskConfig != nil {
-		if zendeskConfig.Account != nil {
-			subdomain = *zendeskConfig.Account
+		if zendeskConfig.SubDomain != nil {
+			subdomain = *zendeskConfig.SubDomain
 		}
 		if zendeskConfig.Email != nil {
 			user = *zendeskConfig.Email
@@ -34,7 +34,7 @@ func connect(ctx context.Context, d *plugin.QueryData) (*zendesk.Client, error) 
 	}
 
 	if subdomain == "" {
-		return nil, errors.New("'account' must be set in the connection configuration")
+		return nil, errors.New("'subdomain' must be set in the connection configuration")
 	}
 
 	if user == "" {

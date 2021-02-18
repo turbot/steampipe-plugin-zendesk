@@ -1,8 +1,8 @@
   connection "zendesk" {
     plugin = "zendesk"
 
-    # The organization account name of your Zendesk instance (required).
-    #account    = "YOUR_ZENDESK_ORG"
+    # The organization subdomain name of your Zendesk instance (required).
+    #subdomain    = "YOUR_ZENDESK_SUBDOMAIN_NAME"
 
     # username / Email address of agent user who have permission to access the API (required).
     #email      = "YOUR_ZENDESK_USERNAME_EMAIL"
