@@ -69,7 +69,7 @@ func tableZendeskTicket() *plugin.Table {
 }
 
 func listTicket(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) (interface{}, error) {
-	conn, err := connect(ctx)
+	conn, err := connect(ctx, d)
 	if err != nil {
 		return nil, err
 	}
@@ -98,7 +98,7 @@ func listTicket(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData)
 }
 
 func getTicket(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (interface{}, error) {
-	conn, err := connect(ctx)
+	conn, err := connect(ctx, d)
 	if err != nil {
 		return nil, err
 	}

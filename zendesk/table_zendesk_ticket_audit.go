@@ -40,7 +40,7 @@ func tableZendeskTicketAudit() *plugin.Table {
 }
 
 func listTicketAudit(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) (interface{}, error) {
-	conn, err := connect(ctx)
+	conn, err := connect(ctx, d)
 	if err != nil {
 		return nil, err
 	}
@@ -62,7 +62,7 @@ func listTicketAudit(ctx context.Context, d *plugin.QueryData, _ *plugin.Hydrate
 }
 
 func getTicketAudit(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (interface{}, error) {
-	conn, err := connect(ctx)
+	conn, err := connect(ctx, d)
 	if err != nil {
 		return nil, err
 	}

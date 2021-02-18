@@ -30,7 +30,7 @@ func tableZendeskGroup() *plugin.Table {
 }
 
 func listGroup(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) (interface{}, error) {
-	conn, err := connect(ctx)
+	conn, err := connect(ctx, d)
 	if err != nil {
 		return nil, err
 	}
@@ -46,7 +46,7 @@ func listGroup(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) 
 }
 
 func getGroup(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (interface{}, error) {
-	conn, err := connect(ctx)
+	conn, err := connect(ctx, d)
 	if err != nil {
 		return nil, err
 	}

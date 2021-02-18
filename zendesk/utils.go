@@ -6,29 +6,43 @@ import (
 	"os"
 
 	"github.com/nukosuke/go-zendesk/zendesk"
+	"github.com/turbot/steampipe-plugin-sdk/plugin"
 )
 
-func connect(_ context.Context) (*zendesk.Client, error) {
-
+func connect(ctx context.Context, d *plugin.QueryData) (*zendesk.Client, error) {
 	// You can set custom *http.Client here
 	client, err := zendesk.NewClient(nil)
 	if err != nil {
 		return nil, err
 	}
 
-	subdomain, ok := os.LookupEnv("ZENDESK_SUBDOMAIN")
-	if !ok || subdomain == "" {
-		return nil, errors.New("ZENDESK_SUBDOMAIN environment variable must be set")
+	subdomain := os.Getenv("ZENDESK_SUBDOMAIN")
+	user := os.Getenv("ZENDESK_USER")
+	token := os.Getenv("ZENDESK_TOKEN")
+
+	zendeskConfig := GetConfig(d.Connection)
+	if &zendeskConfig != nil {
+		if zendeskConfig.SubDomain != nil {
+			subdomain = *zendeskConfig.SubDomain
+		}
+		if zendeskConfig.Email != nil {
+			user = *zendeskConfig.Email
+		}
+		if zendeskConfig.Token != nil {
+			token = *zendeskConfig.Token
+		}
 	}
 
-	user, ok := os.LookupEnv("ZENDESK_USER")
-	if !ok || user == "" {
-		return nil, errors.New("ZENDESK_USER environment variable must be set")
+	if subdomain == "" {
+		return nil, errors.New("'subdomain' must be set in the connection configuration")
 	}
 
-	token, ok := os.LookupEnv("ZENDESK_TOKEN")
-	if !ok || token == "" {
-		return nil, errors.New("ZENDESK_TOKEN environment variable must be set")
+	if user == "" {
+		return nil, errors.New("'email' must be set in the connection configuration")
+	}
+
+	if token == "" {
+		return nil, errors.New("'token' must be set in the connection configuration")
 	}
 
 	// example.zendesk.com
@@ -38,5 +52,4 @@ func connect(_ context.Context) (*zendesk.Client, error) {
 	client.SetCredential(zendesk.NewAPITokenCredential(user, token))
 
 	return client, nil
-
 }
