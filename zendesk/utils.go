@@ -34,15 +34,15 @@ func connect(ctx context.Context, d *plugin.QueryData) (*zendesk.Client, error) 
 	}
 
 	if subdomain == "" {
-		return nil, errors.New("'subdomain' must be set in the connection configuration")
+		return nil, errors.New("'subdomain' must be set in the connection configuration. Edit your connection configuration file and then restart Steampipe")
 	}
 
 	if user == "" {
-		return nil, errors.New("'email' must be set in the connection configuration")
+		return nil, errors.New("'email' must be set in the connection configuration. Edit your connection configuration file and then restart Steampipe")
 	}
 
 	if token == "" {
-		return nil, errors.New("'token' must be set in the connection configuration")
+		return nil, errors.New("'token' must be set in the connection configuration. Edit your connection configuration file and then restart Steampipe")
 	}
 
 	// example.zendesk.com
