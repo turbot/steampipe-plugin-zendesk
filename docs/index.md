@@ -45,7 +45,7 @@ connection "zendesk" {
 
 - `subdomain` - The subdomain name of your Zendesk account.
 - `email` - Email address of agent user who have permission to access the API.
-- `token` - [API token ]((https://support.zendesk.com/hc/en-us/articles/226022787-Generating-a-new-API-token-) for your Zendesk instance.
+- `token` - [API token ](https://support.zendesk.com/hc/en-us/articles/226022787-Generating-a-new-API-token-) for your Zendesk instance.
 
 For backward compatibility, you may instead authenticate via environment variables, however this behavior is deprecated.
 
