@@ -44,3 +44,15 @@ from
 where
   query = 'type:organization acme';
 ```
+
+
+### Consolidated results from multiple searches
+```sql
+select
+  result_number,
+  jsonb_pretty(result)
+from
+  zendesk_search
+where
+  query in ('type:user jane', 'type:organization acme');
+```
