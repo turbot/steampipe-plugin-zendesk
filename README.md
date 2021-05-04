@@ -16,7 +16,12 @@ steampipe plugin install zendesk
 
 Run a query:
 ```sql
-select id, created_at, subject from zendesk_ticket;
+select 
+  id, 
+  created_at, 
+  subject 
+from 
+  zendesk_ticket;
 ```
 
 ## Developing

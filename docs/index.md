@@ -6,8 +6,8 @@ brand_color: "#03363D"
 display_name: "Zendesk"
 name: "zendesk"
 description: "Steampipe plugin for querying Tickets, Users and other resources."
-social_about: Use SQL to query tickets, users and more from Zendesk. Open source CLI. No DB required. 
-social_preview: "/images/plugins/turbot/zendesk-social-graphic.png"
+og_description: "Use SQL to query tickets, users and more from Zendesk. Open source CLI. No DB required." 
+og_image: "/images/plugins/turbot/zendesk-social-graphic.png"
 ---
 
 # Zendesk + Turbot
