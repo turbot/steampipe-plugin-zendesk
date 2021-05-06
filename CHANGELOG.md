@@ -1,3 +1,11 @@
+## v0.2.3 [2021-05-06]
+
+_What's new?_
+
+_Documentation_
+
+- Updated README.md and index.md with latest standards ([#12](https://github.com/turbot/steampipe-plugin-zendesk/pull/12))
+
 ## v0.2.2 [2021-03-18]
 
 _Enhancements_
