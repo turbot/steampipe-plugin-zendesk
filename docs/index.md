@@ -5,7 +5,7 @@ icon_url: "/images/plugins/turbot/zendesk.svg"
 brand_color: "#03363D"
 display_name: "Zendesk"
 name: "zendesk"
-description: "Steampipe plugin for querying Tickets, Users and other resources."
+description: "Steampipe plugin for querying tickets, users, groups and more from Zendesk."
 og_description: "Use SQL to query tickets, users and more from Zendesk. Open source CLI. No DB required." 
 og_image: "/images/plugins/turbot/zendesk-social-graphic.png"
 ---
