@@ -33,7 +33,7 @@ Prerequisites:
 Clone:
 
 ```sh
-git clone git@github.com:turbot/steampipe-plugin-zendesk
+git clone https://github.com/turbot/steampipe-plugin-zendesk.git
 cd steampipe-plugin-zendesk
 ```
 
