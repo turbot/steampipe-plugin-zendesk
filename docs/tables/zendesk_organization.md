@@ -45,7 +45,7 @@ where
 group by
   o.name
 order by
-  count desc;`
+  count desc;
 ```
 
 ### Find all users for an organization
