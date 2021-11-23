@@ -1,3 +1,13 @@
+## v0.3.0 [2021-11-23]
+
+_Enhancements_
+
+- Recompiled plugin with [steampipe-plugin-sdk v1.8.2](https://github.com/turbot/steampipe-plugin-sdk/blob/main/CHANGELOG.md#v182--2021-11-22) and Go version 1.17 ([#20](https://github.com/turbot/steampipe-plugin-zendesk/pull/20))
+
+_Bug fixes_
+
+  - Fixed example query in `zendesk_organization` table ([#22](https://github.com/turbot/steampipe-plugin-zendesk/pull/22))
+
 ## v0.2.4 [2021-09-22]
 
 _Enhancements_
