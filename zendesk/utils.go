@@ -21,16 +21,14 @@ func connect(ctx context.Context, d *plugin.QueryData) (*zendesk.Client, error) 
 	token := os.Getenv("ZENDESK_TOKEN")
 
 	zendeskConfig := GetConfig(d.Connection)
-	if &zendeskConfig != nil {
-		if zendeskConfig.SubDomain != nil {
-			subdomain = *zendeskConfig.SubDomain
-		}
-		if zendeskConfig.Email != nil {
-			user = *zendeskConfig.Email
-		}
-		if zendeskConfig.Token != nil {
-			token = *zendeskConfig.Token
-		}
+	if zendeskConfig.SubDomain != nil {
+		subdomain = *zendeskConfig.SubDomain
+	}
+	if zendeskConfig.Email != nil {
+		user = *zendeskConfig.Email
+	}
+	if zendeskConfig.Token != nil {
+		token = *zendeskConfig.Token
 	}
 
 	if subdomain == "" {
@@ -46,7 +44,10 @@ func connect(ctx context.Context, d *plugin.QueryData) (*zendesk.Client, error) 
 	}
 
 	// example.zendesk.com
-	client.SetSubdomain(subdomain)
+	err = client.SetSubdomain(subdomain)
+	if err != nil {
+		return nil, err
+	}
 
 	// Authenticate with API token
 	client.SetCredential(zendesk.NewAPITokenCredential(user, token))

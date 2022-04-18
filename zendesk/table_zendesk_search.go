@@ -48,7 +48,7 @@ func listSearch(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData)
 		Query: q,
 	}
 	n := 0
-	for true {
+	for {
 		results, page, err := conn.Search(ctx, opts)
 		if err != nil {
 			return nil, err

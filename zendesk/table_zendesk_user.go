@@ -80,7 +80,7 @@ func listUser(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) (
 			PerPage: 100,
 		},
 	}
-	for true {
+	for {
 		users, page, err := conn.GetUsers(ctx, opts)
 		if err != nil {
 			return nil, err
