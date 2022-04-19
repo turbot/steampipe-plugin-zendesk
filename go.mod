@@ -1,6 +1,6 @@
 module github.com/turbot/steampipe-plugin-zendesk
 
-go 1.17
+go 1.18
 
 require (
 	github.com/nukosuke/go-zendesk v0.9.0
