@@ -81,7 +81,7 @@ func listTicket(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData)
 			PerPage: 100,
 		},
 	}
-	for true {
+	for {
 		tickets, page, err := conn.GetTickets(ctx, opts)
 		if err != nil {
 			return nil, err

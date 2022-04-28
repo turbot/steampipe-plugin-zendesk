@@ -45,7 +45,7 @@ func listTicketAudit(ctx context.Context, d *plugin.QueryData, _ *plugin.Hydrate
 		return nil, err
 	}
 	opts := zendesk.CursorOption{}
-	for true {
+	for {
 		ticketAudits, cursor, err := conn.GetAllTicketAudits(ctx, opts)
 		if err != nil {
 			return nil, err

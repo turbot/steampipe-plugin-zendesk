@@ -55,7 +55,7 @@ func listTrigger(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData
 			PerPage: 100,
 		},
 	}
-	for true {
+	for {
 		triggers, page, err := conn.GetTriggers(ctx, opts)
 		if err != nil {
 			return nil, err

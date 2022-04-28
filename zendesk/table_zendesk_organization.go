@@ -50,7 +50,7 @@ func listOrganization(ctx context.Context, d *plugin.QueryData, _ *plugin.Hydrat
 			PerPage: 100,
 		},
 	}
-	for true {
+	for {
 		organizations, page, err := conn.GetOrganizations(ctx, opts)
 		if err != nil {
 			return nil, err
