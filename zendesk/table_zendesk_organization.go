@@ -5,8 +5,8 @@ import (
 
 	"github.com/nukosuke/go-zendesk/zendesk"
 
-	"github.com/turbot/steampipe-plugin-sdk/grpc/proto"
-	"github.com/turbot/steampipe-plugin-sdk/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v3/grpc/proto"
+	"github.com/turbot/steampipe-plugin-sdk/v3/plugin"
 )
 
 func tableZendeskOrganization() *plugin.Table {

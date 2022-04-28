@@ -6,7 +6,7 @@ import (
 	"os"
 
 	"github.com/nukosuke/go-zendesk/zendesk"
-	"github.com/turbot/steampipe-plugin-sdk/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v3/plugin"
 )
 
 func connect(ctx context.Context, d *plugin.QueryData) (*zendesk.Client, error) {
