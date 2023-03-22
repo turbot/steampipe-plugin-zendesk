@@ -5,9 +5,9 @@ import (
 
 	"github.com/nukosuke/go-zendesk/zendesk"
 
-	"github.com/turbot/steampipe-plugin-sdk/v4/grpc/proto"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin/transform"
+	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
 )
 
 func tableZendeskTicketAudit() *plugin.Table {
@@ -66,7 +66,7 @@ func getTicketAudit(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateD
 	if err != nil {
 		return nil, err
 	}
-	quals := d.KeyColumnQuals
+	quals := d.EqualsQuals
 	id := quals["id"].GetInt64Value()
 	ticketID := quals["ticket_id"].GetInt64Value()
 	result, err := conn.GetTicketAudit(ctx, id, ticketID)

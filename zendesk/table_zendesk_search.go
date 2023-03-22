@@ -5,9 +5,9 @@ import (
 
 	"github.com/nukosuke/go-zendesk/zendesk"
 
-	"github.com/turbot/steampipe-plugin-sdk/v4/grpc/proto"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin"
-	//"github.com/turbot/steampipe-plugin-sdk/v4/plugin/transform"
+	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
+	//"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
 )
 
 type searchResult struct {
@@ -38,7 +38,7 @@ func listSearch(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData)
 	if err != nil {
 		return nil, err
 	}
-	quals := d.KeyColumnQuals
+	quals := d.EqualsQuals
 	q := quals["query"].GetStringValue()
 	opts := &zendesk.SearchOptions{
 		PageOptions: zendesk.PageOptions{
