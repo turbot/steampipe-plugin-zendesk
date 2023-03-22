@@ -1,3 +1,13 @@
+## v0.6.0 [2023-03-22]
+
+_Dependencies_
+
+- Recompiled plugin with [steampipe-plugin-sdk v5.3.0](https://github.com/turbot/steampipe-plugin-sdk/blob/main/CHANGELOG.md#v530-2023-03-16) which includes fixes for query cache pending item mechanism and aggregator connections not working for dynamic tables. ([#38](https://github.com/turbot/steampipe-plugin-zendesk/pull/38))
+
+_Bug fixes_
+
+- Fixed the `external_id` column in `zendesk_ticket` table to be of `STRING` data type instead of `INT`. ([#37](https://github.com/turbot/steampipe-plugin-zendesk/pull/37)) (Thanks [@tylarb](https://github.com/tylarb) for the contribution!)
+
 ## v0.5.0 [2022-09-09]
 
 _Dependencies_
