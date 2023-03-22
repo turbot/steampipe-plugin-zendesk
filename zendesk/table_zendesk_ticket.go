@@ -32,7 +32,7 @@ func tableZendeskTicket() *plugin.Table {
 			{Name: "description", Type: proto.ColumnType_STRING, Description: "Read-only first comment on the ticket. When creating a ticket, use comment to set the description."},
 			{Name: "due_at", Type: proto.ColumnType_TIMESTAMP, Description: "If this is a ticket of type \"task\" it has a due date. Due date format uses ISO 8601 format."},
 			{Name: "email_cc_ids", Type: proto.ColumnType_JSON, Description: "The ids of agents or end users currently CC'ed on the ticket."},
-			{Name: "external_id", Type: proto.ColumnType_INT, Description: "An id you can use to link Zendesk Support tickets to local records"},
+			{Name: "external_id", Type: proto.ColumnType_STRING, Description: "An id you can use to link Zendesk Support tickets to local records"},
 			{Name: "follower_ids", Type: proto.ColumnType_JSON, Description: "The ids of agents currently following the ticket."},
 			{Name: "followup_ids", Type: proto.ColumnType_JSON, Description: "The ids of the followups created from this ticket. Ids are only visible once the ticket is closed"},
 			{Name: "forum_topic_id", Type: proto.ColumnType_INT, Description: "The topic in the Zendesk Web portal this ticket originated from, if any. The Web portal is deprecated"},
