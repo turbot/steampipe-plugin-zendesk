@@ -4,7 +4,7 @@ go 1.21
 
 require (
 	github.com/nukosuke/go-zendesk v0.9.0
-	github.com/turbot/steampipe-plugin-sdk/v5 v5.6.1
+	github.com/turbot/steampipe-plugin-sdk/v5 v5.6.2
 )
 
 require (
