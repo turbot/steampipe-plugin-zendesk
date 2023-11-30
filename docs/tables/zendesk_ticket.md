@@ -1,10 +1,20 @@
-# Table: zendesk_ticket
+---
+title: "Steampipe Table: zendesk_ticket - Query Zendesk Tickets using SQL"
+description: "Allows users to query Zendesk Tickets, specifically providing insights into ticket details, including status, priority, and associated customer information."
+---
 
-Work with [tickets in Zendesk](https://developer.zendesk.com/rest_api/docs/support/tickets).
+# Table: zendesk_ticket - Query Zendesk Tickets using SQL
+
+Zendesk Tickets are a key component of Zendesk's customer service platform, representing a communication between a customer and an agent. They contain the entire communication thread and relevant data, offering a comprehensive view of the customer's issue and the steps taken to resolve it. They are instrumental in tracking, prioritizing, and solving customer's support interactions.
+
+## Table Usage Guide
+
+The `zendesk_ticket` table offers insights into the tickets within Zendesk's customer service platform. As a customer support agent or manager, you can explore ticket-specific details through this table, including status, priority, and associated customer information. Use it to manage and prioritize your support interactions, gain a better understanding of customer issues, and track the steps taken towards resolution.
 
 ## Examples
 
 ### List open tickets
+Explore which customer issues are unresolved by identifying open tickets in your customer support system. This allows for efficient prioritization and management of customer requests, ensuring timely responses and improved customer satisfaction.
 
 ```sql
 select
@@ -20,6 +30,7 @@ where
 ```
 
 ### Ticket status summary
+Gain insights into the distribution of ticket statuses to understand which types are most common in your Zendesk system, aiding in resource allocation and customer service improvement efforts.
 
 ```sql
 select
@@ -34,8 +45,9 @@ order by
 ```
 
 ### Stale tickets
-
+Identify instances where tickets in 'open', 'pending', or 'hold' status have not been updated in the past week. This can help prioritize ticket resolution and improve customer service response times.
 Unsolved tickets that haven't had any update for 7 days.
+
 
 ```sql
 select
@@ -53,6 +65,7 @@ and
 
 
 ### Tickets assigned to Jane
+Discover the segments that are assigned to a particular user, in this case, Jane. This can be useful to understand Jane's workload and the status of her assigned tasks.
 
 ```sql
 select
@@ -70,8 +83,9 @@ and
 
 
 ### Ticket aging reports
-
+Explore which tickets are still open, pending, or on hold, and assess their age to understand the efficiency of your customer service. This query can help identify potential bottlenecks or delays in your ticket resolution process.
 All unsolved tickets, sorted by age in days.
+
 
 ```sql
 select
