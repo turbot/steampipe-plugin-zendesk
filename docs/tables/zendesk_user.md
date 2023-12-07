@@ -16,7 +16,18 @@ The `zendesk_user` table provides insights into Users within Zendesk. As a custo
 ### Basic user info
 Determine the active status and last login details of users to better understand their engagement with your platform. This information could be useful in identifying patterns of usage or detecting inactive users.
 
-```sql
+```sql+postgres
+select
+  id,
+  name,
+  email,
+  active,
+  last_login_at
+from
+  zendesk_user;
+```
+
+```sql+sqlite
 select
   id,
   name,
@@ -30,7 +41,17 @@ from
 ### List administrators
 Explore which users in your Zendesk account have administrative privileges. This is useful for auditing account access and ensuring only the appropriate users have high-level permissions.
 
-```sql
+```sql+postgres
+select
+  name,
+  email
+from
+  zendesk_user
+where
+  role = 'admin';
+```
+
+```sql+sqlite
 select
   name,
   email
@@ -43,7 +64,7 @@ where
 ### Agents and admins (paid seats) who have not logged in for 30 days
 Determine the agents and administrators who haven't accessed the system in the last 30 days. This could be useful in assessing user engagement levels or identifying inactive accounts for potential follow-up or account management actions.
 
-```sql
+```sql+postgres
 select
   name,
   email,
@@ -57,10 +78,24 @@ and
   last_login_at < current_date - interval '30 days';
 ```
 
+```sql+sqlite
+select
+  name,
+  email,
+  role,
+  last_login_at
+from
+  zendesk_user
+where
+  role in ('admin', 'agent')
+and
+  last_login_at < date('now','-30 days');
+```
+
 ### Number of users per organization
 Explore which organizations have the most users, allowing you to understand user distribution and identify high-usage organizations. This can help in resource allocation and strategic planning.
 
-```sql
+```sql+postgres
 select
   o.name,
   count(*)
@@ -74,4 +109,20 @@ group by
   o.name
 order by
   count desc;
+```
+
+```sql+sqlite
+select
+  o.name,
+  count(*)
+from
+  zendesk_user as u,
+  zendesk_organization as o
+where
+  u.organization_id = o.id
+group by
+  o.id,
+  o.name
+order by
+  count(*) desc;
 ```

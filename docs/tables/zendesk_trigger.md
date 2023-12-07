@@ -16,7 +16,7 @@ The `zendesk_trigger` table provides insights into triggers within Zendesk Suppo
 ### List triggers in order
 Identify the sequence of active triggers to understand their order of execution. This is useful for troubleshooting and optimizing workflow processes.
 
-```sql
+```sql+postgres
 select
   position,
   title
@@ -28,10 +28,31 @@ order by
   position;
 ```
 
+```sql+sqlite
+select
+  position,
+  title
+from
+  zendesk_trigger
+where
+  active = 1
+order by
+  position;
+```
+
 ### List all inactive triggers
 Explore which triggers are currently inactive in your Zendesk account. This can be useful for cleaning up your configuration and reactivating or deleting unused triggers to improve system performance.
 
-```sql
+```sql+postgres
+select
+  title
+from
+  zendesk_trigger
+where
+  not active;
+```
+
+```sql+sqlite
 select
   title
 from
@@ -50,7 +71,7 @@ priority for the trigger to run. We rely on JSON submatching in postgres to
 find the condition among the array.
 
 
-```sql
+```sql+postgres
 select
   title,
   conditions_all
@@ -60,13 +81,34 @@ where
   conditions_all @> '[{"field":"priority","operator":"value","value":"high"}]';
 ```
 
+```sql+sqlite
+select
+  title,
+  conditions_all
+from
+  zendesk_trigger
+where
+  json_extract(conditions_all, '$[0].field') = 'priority' and
+  json_extract(conditions_all, '$[0].operator') = 'value' and
+  json_extract(conditions_all, '$[0].value') = 'high';
+```
+
 # Expand the actions for each trigger
 
-```sql
+```sql+postgres
 select
   title,
   jsonb_path_query(actions, '$[*].field') as actions,
   jsonb_path_query(actions, '$[*].value')
+from
+  zendesk_trigger;
+```
+
+```sql+sqlite
+select
+  title,
+  json_extract(actions, '$[*].field') as actions,
+  json_extract(actions, '$[*].value')
 from
   zendesk_trigger;
 ```

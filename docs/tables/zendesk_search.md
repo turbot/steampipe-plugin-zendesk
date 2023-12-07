@@ -16,7 +16,7 @@ The `zendesk_search` table provides insights into search results within Zendesk 
 ### Find a ticket number 123
 Discover the specifics of a particular ticket, such as its details and associated data, which can be useful when needing to quickly access information about a specific customer issue or request.
 
-```sql
+```sql+postgres
 select
   result_number,
   jsonb_pretty(result)
@@ -26,10 +26,20 @@ where
   query = '123';
 ```
 
+```sql+sqlite
+select
+  result_number,
+  result
+from
+  zendesk_search
+where
+  query = '123';
+```
+
 ### Find information about the user Jane
 Explore the details related to a specific user in a Zendesk account. This is useful for gaining a comprehensive understanding of a user's interactions and activities within the system.
 
-```sql
+```sql+postgres
 select
   result_number,
   jsonb_pretty(result)
@@ -39,10 +49,20 @@ where
   query = 'type:user jane';
 ```
 
+```sql+sqlite
+select
+  result_number,
+  result
+from
+  zendesk_search
+where
+  query = 'type:user jane';
+```
+
 ### Find information about the organization ACME
 Discover the segments that pertain to a specific organization, ACME, to gain insights into relevant details. This can be useful for understanding the organization's interactions and engagements.
 
-```sql
+```sql+postgres
 select
   result_number,
   jsonb_pretty(result)
@@ -52,13 +72,33 @@ where
   query = 'type:organization acme';
 ```
 
+```sql+sqlite
+select
+  result_number,
+  result
+from
+  zendesk_search
+where
+  query = 'type:organization acme';
+```
+
 
 ### Consolidated results from multiple searches
 Explore consolidated information from multiple searches by using this query. This is beneficial when you want to simultaneously examine different types of data, such as user and organization details, based on specific search terms.
-```sql
+```sql+postgres
 select
   result_number,
   jsonb_pretty(result)
+from
+  zendesk_search
+where
+  query in ('type:user jane', 'type:organization acme');
+```
+
+```sql+sqlite
+select
+  result_number,
+  result
 from
   zendesk_search
 where

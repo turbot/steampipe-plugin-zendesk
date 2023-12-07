@@ -16,7 +16,7 @@ The `zendesk_ticket_audit` table provides insights into the changes and updates 
 ### List all ticket audit rows
 Explore which ticket audits have been performed, enabling you to understand when and by whom each ticket was modified, as well as the number of events associated with each modification. This can be useful for tracking changes and maintaining accountability in customer support situations.
 
-```sql
+```sql+postgres
 select
   ticket_id,
   id,
@@ -27,10 +27,21 @@ from
   zendesk_ticket_audit;
 ```
 
+```sql+sqlite
+select
+  ticket_id,
+  id,
+  created_at,
+  author_id,
+  json_array_length(events)
+from
+  zendesk_ticket_audit;
+```
+
 ### List all events associated with ticket audits
 Explore all changes related to ticket audits, including the type of change and the old and new values, to better understand the sequence of events and actions taken. This can be useful for troubleshooting, auditing, or understanding the history of a ticket.
 
-```sql
+```sql+postgres
 select
   ta.ticket_id,
   ta.id,
@@ -45,10 +56,24 @@ lateral
   jsonb_array_elements(ta.events) as e;
 ```
 
+```sql+sqlite
+select
+  ta.ticket_id,
+  ta.id,
+  json_extract(e.value, '$.id') as event_id,
+  json_extract(e.value, '$.type') as type,
+  json_extract(e.value, '$.field_name') as field_name,
+  json_extract(e.value, '$.previous_value') as previous_value,
+  json_extract(e.value, '$.value') as value
+from
+  zendesk_ticket_audit as ta,
+  json_each(ta.events) as e;
+```
+
 ### List all events that changed tags
 This query provides a way to track the changes made to event tags. It is useful in monitoring and auditing purposes, allowing users to identify and analyze alterations made to specific event tags.
 
-```sql
+```sql+postgres
 select
   ta.ticket_id,
   ta.id,
@@ -67,10 +92,28 @@ and
   e ->> 'field_name' = 'tags';
 ```
 
+```sql+sqlite
+select
+  ta.ticket_id,
+  ta.id,
+  json_extract(e.value, '$.id') as event_id,
+  json_extract(e.value, '$.type') as type,
+  json_extract(e.value, '$.field_name') as field_name,
+  json_extract(e.value, '$.previous_value') as previous_value,
+  json_extract(e.value, '$.value') as value
+from
+  zendesk_ticket_audit as ta,
+  json_each(ta.events) as e
+where
+  json_extract(e.value, '$.type') = 'Change'
+and
+  json_extract(e.value, '$.field_name') = 'tags';
+```
+
 ### List all satisfaction rating events
 Identify instances where customer satisfaction ratings have been recorded. This is useful for monitoring customer feedback and improving service quality.
 
-```sql
+```sql+postgres
 select
   ta.ticket_id,
   ta.id,
@@ -83,4 +126,18 @@ lateral
   jsonb_array_elements(ta.events) as e
 where
   e ->> 'type' = 'SatisfactionRating'
+```
+
+```sql+sqlite
+select
+  ta.ticket_id,
+  ta.id,
+  json_extract(e.value, '$.id') as event_id,
+  json_extract(e.value, '$.type') as type,
+  json_extract(e.value, '$.score') as score
+from
+  zendesk_ticket_audit as ta,
+  json_each(ta.events) as e
+where
+  json_extract(e.value, '$.type') = 'SatisfactionRating'
 ```

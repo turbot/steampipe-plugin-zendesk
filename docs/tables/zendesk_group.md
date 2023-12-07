@@ -16,7 +16,15 @@ The `zendesk_group` table provides insights into Groups within Zendesk Support. 
 ### Basic group info
 Explore the different groups available within your Zendesk account to better manage customer interactions and support workflows. This can be particularly useful for organizing your support team and streamlining communication.
 
-```sql
+```sql+postgres
+select
+  id,
+  name
+from
+  zendesk_group;
+```
+
+```sql+sqlite
 select
   id,
   name

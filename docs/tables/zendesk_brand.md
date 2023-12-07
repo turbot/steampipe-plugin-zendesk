@@ -16,7 +16,16 @@ The `zendesk_brand` table provides insights into Brands within Zendesk. As a cus
 ### Get brand information
 Explore the specific details of a particular brand in your Zendesk account to better understand its characteristics and settings. This is particularly useful when you need to assess the brand's configuration for troubleshooting or optimization purposes.
 
-```sql
+```sql+postgres
+select
+  *
+from
+  zendesk_brand
+where
+  id = '1234';
+```
+
+```sql+sqlite
 select
   *
 from
