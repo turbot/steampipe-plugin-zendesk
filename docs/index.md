@@ -81,7 +81,4 @@ connection "zendesk" {
 - `email` - Email address of agent user who have permission to access the API.
 - `token` - [API token ](https://support.zendesk.com/hc/en-us/articles/226022787-Generating-a-new-API-token-) for your Zendesk instance.
 
-## Get involved
 
-* Open source: https://github.com/turbot/steampipe-plugin-zendesk
-* Community: [Join #steampipe on Slack →](https://turbot.com/community/join)
