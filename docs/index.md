@@ -8,6 +8,7 @@ name: "zendesk"
 description: "Steampipe plugin for querying tickets, users, groups and more from Zendesk."
 og_description: "Use SQL to query tickets, users and more from Zendesk. Open source CLI. No DB required." 
 og_image: "/images/plugins/turbot/zendesk-social-graphic.png"
+engines: ["steampipe", "sqlite", "postgres", "export"]
 ---
 
 # Zendesk + Turbot
