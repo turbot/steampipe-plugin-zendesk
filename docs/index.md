@@ -8,13 +8,14 @@ name: "zendesk"
 description: "Steampipe plugin for querying tickets, users, groups and more from Zendesk."
 og_description: "Use SQL to query tickets, users and more from Zendesk. Open source CLI. No DB required." 
 og_image: "/images/plugins/turbot/zendesk-social-graphic.png"
+engines: ["steampipe", "sqlite", "postgres", "export"]
 ---
 
 # Zendesk + Turbot
 
 [Zendesk](https://www.zendesk.com/) is a customer service SaaS platform with 200,000+ customers. It enables organizations to provide customer service via text, mobile, phone, email, live chat, social media.
 
-[Steampipe](https://steampipe.io) is an open source CLI to instantly query cloud APIs using SQL.
+[Steampipe](https://steampipe.io) is an open-source zero-ETL engine to instantly query cloud APIs using SQL.
 
 For example:
 
@@ -80,7 +81,4 @@ connection "zendesk" {
 - `email` - Email address of agent user who have permission to access the API.
 - `token` - [API token ](https://support.zendesk.com/hc/en-us/articles/226022787-Generating-a-new-API-token-) for your Zendesk instance.
 
-## Get involved
 
-* Open source: https://github.com/turbot/steampipe-plugin-zendesk
-* Community: [Join #steampipe on Slack →](https://turbot.com/community/join)
