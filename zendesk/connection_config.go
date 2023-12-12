@@ -2,25 +2,12 @@ package zendesk
 
 import (
 	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
-	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/schema"
 )
 
 type zendeskConfig struct {
-	SubDomain *string `cty:"subdomain"`
-	Email     *string `cty:"email"`
-	Token     *string `cty:"token"`
-}
-
-var ConfigSchema = map[string]*schema.Attribute{
-	"subdomain": {
-		Type: schema.TypeString,
-	},
-	"email": {
-		Type: schema.TypeString,
-	},
-	"token": {
-		Type: schema.TypeString,
-	},
+	SubDomain *string `hcl:"subdomain"`
+	Email     *string `hcl:"email"`
+	Token     *string `hcl:"token"`
 }
 
 func ConfigInstance() interface{} {
