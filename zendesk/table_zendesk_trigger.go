@@ -21,7 +21,7 @@ func tableZendeskTrigger() *plugin.Table {
 			KeyColumns: plugin.SingleColumn("id"),
 			Hydrate:    getTrigger,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 
 			// NOTE:
 			// The actions and conditions_* fields are arrays of {field,value} objects.
@@ -40,7 +40,7 @@ func tableZendeskTrigger() *plugin.Table {
 			{Name: "description", Type: proto.ColumnType_STRING, Description: "The description of the trigger"},
 			{Name: "position", Type: proto.ColumnType_INT, Description: "Position of the trigger, determines the order they will execute in."},
 			{Name: "updated_at", Type: proto.ColumnType_TIMESTAMP, Description: "The time of the last update of the trigger"},
-		},
+		}),
 	}
 }
 

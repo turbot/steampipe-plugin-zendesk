@@ -21,7 +21,7 @@ func tableZendeskBrand() *plugin.Table {
 			KeyColumns: plugin.SingleColumn("id"),
 			Hydrate:    getBrand,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 
 			// TODO - Change the id from string to int, but only after get calls work for bigint
 
@@ -44,11 +44,10 @@ func tableZendeskBrand() *plugin.Table {
 			{Name: "logo_size", Type: proto.ColumnType_INT, Description: "The size of the image file in bytes"},
 			{Name: "logo_thumbnails", Type: proto.ColumnType_JSON, Description: "An array of attachment objects"},
 			{Name: "signature_template", Type: proto.ColumnType_STRING, Description: "The signature template for a brand"},
-			{Name: "subdomain", Type: proto.ColumnType_STRING, Description: "The subdomain of the brand"},
 			{Name: "ticket_form_ids", Type: proto.ColumnType_JSON, Description: "The ids of ticket forms that are available for use by a brand"},
 			{Name: "updated_at", Type: proto.ColumnType_TIMESTAMP, Description: "The time of the last update of the brand"},
 			{Name: "url", Type: proto.ColumnType_STRING, Description: "The API URL of the brand"},
-		},
+		}),
 	}
 }
 

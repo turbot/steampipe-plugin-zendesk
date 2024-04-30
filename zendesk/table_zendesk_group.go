@@ -18,14 +18,14 @@ func tableZendeskGroup() *plugin.Table {
 			KeyColumns: plugin.SingleColumn("id"),
 			Hydrate:    getGroup,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			{Name: "id", Type: proto.ColumnType_INT, Description: "Unique identifier for the group"},
 			{Name: "url", Type: proto.ColumnType_STRING, Description: "API url of the group"},
 			{Name: "name", Type: proto.ColumnType_STRING, Description: "Name of the group"},
 			{Name: "deleted", Type: proto.ColumnType_BOOL, Description: "True if the group has been deleted"},
 			{Name: "created_at", Type: proto.ColumnType_TIMESTAMP, Description: "The time the group was created"},
 			{Name: "updated_at", Type: proto.ColumnType_TIMESTAMP, Description: "The time of the last update of the group"},
-		},
+		}),
 	}
 }
 
