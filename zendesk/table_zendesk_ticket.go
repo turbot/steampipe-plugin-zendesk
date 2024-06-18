@@ -21,7 +21,7 @@ func tableZendeskTicket() *plugin.Table {
 			KeyColumns: plugin.SingleColumn("id"),
 			Hydrate:    getTicket,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			{Name: "allow_attachments", Type: proto.ColumnType_BOOL, Description: "Permission for agents to add add attachments to a comment. Defaults to true"},
 			{Name: "allow_channelback", Type: proto.ColumnType_BOOL, Description: "Is false if channelback is disabled, true otherwise. Only applicable for channels framework ticket"},
 			{Name: "assignee_id", Type: proto.ColumnType_INT, Description: "The agent currently assigned to the ticket"},
@@ -64,7 +64,7 @@ func tableZendeskTicket() *plugin.Table {
 			{Name: "via_source_from", Type: proto.ColumnType_JSON, Transform: transform.FromField("Via.Source.From"), Description: "Source the ticket was sent to"},
 			{Name: "via_source_ref", Type: proto.ColumnType_STRING, Transform: transform.FromField("Via.Source.Ref"), Description: "Medium used to raise the ticket"},
 			{Name: "via_source_to", Type: proto.ColumnType_JSON, Transform: transform.FromField("Via.Source.From"), Description: "Target that received the ticket"},
-		},
+		}),
 	}
 }
 

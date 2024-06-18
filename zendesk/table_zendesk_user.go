@@ -20,7 +20,7 @@ func tableZendeskUser() *plugin.Table {
 			KeyColumns: plugin.SingleColumn("id"),
 			Hydrate:    getUser,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			{Name: "active", Type: proto.ColumnType_BOOL, Description: "False if the user has been deleted"},
 			{Name: "alias", Type: proto.ColumnType_STRING, Description: "An alias displayed to end users"},
 			{Name: "chat_only", Type: proto.ColumnType_BOOL, Description: "Whether or not the user is a chat-only agent"},
@@ -65,7 +65,7 @@ func tableZendeskUser() *plugin.Table {
 			{Name: "url", Type: proto.ColumnType_STRING, Description: "The user's API url"},
 			{Name: "user_fields", Type: proto.ColumnType_JSON, Description: "Values of custom fields in the user's profile."},
 			{Name: "verified", Type: proto.ColumnType_BOOL, Description: "Any of the user's identities is verified."},
-		},
+		}),
 	}
 }
 

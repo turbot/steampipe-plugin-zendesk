@@ -24,12 +24,12 @@ func tableZendeskSearch() *plugin.Table {
 			KeyColumns: plugin.SingleColumn("query"),
 			Hydrate:    listSearch,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			{Name: "query", Type: proto.ColumnType_STRING},
 			{Name: "result_number", Type: proto.ColumnType_INT},
 			// Mixture of types, including tickets and users
 			{Name: "result", Type: proto.ColumnType_JSON},
-		},
+		}),
 	}
 }
 

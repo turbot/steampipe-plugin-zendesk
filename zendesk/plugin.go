@@ -10,6 +10,12 @@ import (
 func Plugin(ctx context.Context) *plugin.Plugin {
 	p := &plugin.Plugin{
 		Name: "steampipe-plugin-zendesk",
+		ConnectionKeyColumns: []plugin.ConnectionKeyColumn{
+			{
+				Name:    "subdomain",
+				Hydrate: getSubdomain,
+			},
+		},
 		ConnectionConfigSchema: &plugin.ConnectionConfigSchema{
 			NewInstance: ConfigInstance,
 		},

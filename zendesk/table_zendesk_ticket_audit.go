@@ -21,7 +21,7 @@ func tableZendeskTicketAudit() *plugin.Table {
 			KeyColumns: plugin.AnyColumn([]string{"id", "ticket_id"}),
 			Hydrate:    getTicketAudit,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "id", Type: proto.ColumnType_INT, Description: "Unique identifier for the ticket update."},
 			{Name: "ticket_id", Type: proto.ColumnType_INT, Description: "The ID of the associated ticket."},
@@ -35,7 +35,7 @@ func tableZendeskTicketAudit() *plugin.Table {
 			{Name: "via_source_from", Type: proto.ColumnType_JSON, Transform: transform.FromField("Via.Source.From"), Description: "Source the ticket was sent to."},
 			{Name: "via_source_ref", Type: proto.ColumnType_STRING, Transform: transform.FromField("Via.Source.Ref"), Description: "Medium used to raise the ticket."},
 			{Name: "via_source_to", Type: proto.ColumnType_JSON, Transform: transform.FromField("Via.Source.From"), Description: "Target that received the ticket."},
-		},
+		}),
 	}
 }
 
