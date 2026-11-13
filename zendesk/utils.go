@@ -6,10 +6,10 @@ import (
 	"os"
 
 	"github.com/nukosuke/go-zendesk/zendesk"
-	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
-	"github.com/turbot/steampipe-plugin-sdk/v5/memoize"
-	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
-	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
+	"github.com/turbot/steampipe-plugin-sdk/v6/grpc/proto"
+	"github.com/turbot/steampipe-plugin-sdk/v6/memoize"
+	"github.com/turbot/steampipe-plugin-sdk/v6/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v6/plugin/transform"
 )
 
 func connect(ctx context.Context, d *plugin.QueryData) (*zendesk.Client, error) {
@@ -94,12 +94,14 @@ func getSubdomainUncached(ctx context.Context, d *plugin.QueryData, h *plugin.Hy
 
 	var consultData zendeskConfig
 
-	if cachedData, ok := d.ConnectionManager.Cache.Get(cacheKey); ok {
+	if cachedData, ok := d.ConnectionCache.Get(ctx, cacheKey); ok {
 		consultData = cachedData.(zendeskConfig)
 	} else {
 		consultData = GetConfig(d.Connection)
 
-		d.ConnectionManager.Cache.Set(cacheKey, consultData)
+		if err := d.ConnectionCache.Set(ctx, cacheKey, consultData); err != nil {
+			plugin.Logger(ctx).Warn("zendesk.getSubdomainUncached", "cache_key", cacheKey, "error", err)
+		}
 	}
 
 	return consultData, nil
